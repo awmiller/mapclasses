@@ -1,0 +1,19 @@
+g++ -std=c++11 -c -g -Wall map.cpp
+map.cpp: In function ‘std::ofstream& operator<<(std::ofstream&, const Map&)’:
+map.cpp:74:18: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second: [enabled by default]
+     ofile << map.size;
+                  ^
+In file included from /usr/include/c++/4.8/ostream:612:0,
+                 from /usr/include/c++/4.8/istream:39,
+                 from /usr/include/c++/4.8/fstream:38,
+                 from map_item.h:10,
+                 from map.h:10,
+                 from map.cpp:8:
+/usr/include/c++/4.8/bits/ostream.tcc:105:5: note: candidate 1: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^
+map.cpp:73:16: note: candidate 2: std::ofstream& operator<<(std::ofstream&, const Map&)
+ std::ofstream& operator<<(std::ofstream& ofile,const Map& map){
+                ^
+g++ -std=c++11 main.o op_overloading_test.o map.o map_item.o -g -o driver
+
