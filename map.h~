@@ -7,7 +7,7 @@
 
 #ifndef MAP_H
 #define	MAP_H
-#include "MapItem.h"
+#include "map_item.h"
 #include <fstream>
 class Map {
 public:

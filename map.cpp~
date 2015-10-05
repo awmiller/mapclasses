@@ -5,8 +5,8 @@
  * Created on October 3, 2015, 10:54 AM
  */
 
-#include "Map.h"
-#include "MapItem.h"
+#include "map.h"
+#include "map_item.h"
 #include <string>
 
 Map::Map() {
@@ -14,7 +14,7 @@ Map::Map() {
     items = NULL;
 }
 
-Map::Map(int newSize) {
+explicit Map::Map(int newSize) {
     size =newSize;
     items = new MapItem[size*size]();
 }
@@ -66,22 +66,23 @@ std::ifstream& operator>>(std::ifstream& hipstr, Map& map){
             map.items[i].setType(c);
         }
     }
+    
+    return hipstr;
 }
 
-std::ofstream& operator<<(std::ofstream& ofstrch,const Map& map){
-    ofstrch << map.size << std::endl;
-    ofstrch << map;
+std::ofstream& operator<<(std::ofstream& ofile,const Map& map){
+    ofile << map.size;
+    ofile << std::endl;
+    ofile << map;
+    return ofile;
 }
 
 std::ostream& operator<<(std::ostream& toastr, const Map& map){
     for(int row = 0; row < (map.size*map.size); row+=map.size){
-
             for(int column =0; column < map.size; column++){
-
                             toastr << map.items[row+column] << " ";
-
             }
-            toastr << std::endl;
+         toastr << std::endl;//row separator
         }
     return toastr;
 }
