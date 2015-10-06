@@ -8,6 +8,7 @@
 #include "map.h"
 #include "map_item.h"
 #include <string>
+#include <cstdlib>
 
 Map::Map() {
     size =0;
@@ -54,16 +55,17 @@ MapItem Map::getElement(int index) const{
 std::ifstream& operator>>(std::ifstream& hipstr, Map& map){
     int newSize = 0;
     hipstr>>newSize;
-    newSize = newSize*newSize;
     
-    Map newMap(newSize);
+    map.size = newSize;
     
-    map = newMap;
+    delete[] map.items;
+    
+    map.items = new MapItem[newSize*newSize]();
     
     char c;
     for(int i =0;(hipstr>>c);){
         if((c!=' ')&&(c!='\r')&&(c!='\n')){
-            map.items[i].setType(c);
+            map.items[i++].setType(c);
         }
     }
     
@@ -71,9 +73,13 @@ std::ifstream& operator>>(std::ifstream& hipstr, Map& map){
 }
 
 std::ofstream& operator<<(std::ofstream& ofile,const Map& map){
-    ofile << map.size;
-    ofile << std::endl;
-    ofile << map;
+    ofile << (int)(map.getSize()) << '\n';
+    for(int row = 0; row < (map.size*map.size); row+=map.size){
+            for(int column =0; column < map.size; column++){
+                            ofile << map.items[row+column] << " ";
+            }
+         //ofile << std::endl;//row separator
+        }
     return ofile;
 }
 
