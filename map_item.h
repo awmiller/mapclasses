@@ -11,15 +11,20 @@
 class MapItem {
 public:
     MapItem();
-    explicit MapItem(char initializer);
-    MapItem(const MapItem& orig);
-    char getType() const;
-    void setType(char newType);
-    friend std::ifstream& operator>>(std::ifstream& nifstr, MapItem& mapitem);
-    friend std::ostream& operator<<(std::ostream& ostrizr, MapItem& mapitem);
+    virtual ~MapItem();
+    virtual tick() =0;
+
+//Depricated
+//
+//    explicit MapItem(char initializer);
+//    MapItem(const MapItem& orig);
+//    char getType() const;
+//    void setType(char newType);
+//    friend std::ifstream& operator>>(std::ifstream& nifstr, MapItem& mapitem);
+//    friend std::ostream& operator<<(std::ostream& ostrizr, MapItem& mapitem);
     
 //private:
-    char type;
+//    char type;
 
 };
 

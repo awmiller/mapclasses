@@ -1,7 +1,7 @@
-#include "op_overloading_test.h"
+#include "inheritance_test.h"
 
 int main() {
-  OperatorOverloadingTest test;
+  InheritanceTest test;
   test.run_tests();
 
   return 0;
