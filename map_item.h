@@ -7,12 +7,12 @@
 
 #ifndef MAPITEM_H
 #define	MAPITEM_H
-#include <fstream>
+
 class MapItem {
 public:
     MapItem();
     virtual ~MapItem();
-    virtual tick() =0;
+    virtual void tick() =0;
 
 //Depricated
 //

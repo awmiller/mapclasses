@@ -1,4 +1,6 @@
 #include "inheritance_test.h"
+#include <iostream>
+using namespace std;
 
 InheritanceTest::InheritanceTest() {
 
@@ -113,7 +115,7 @@ void InheritanceTest::check_residential_tick() {
 }
 
 void InheritanceTest::print_header( string message ) {
-  cout << "--- Testing " << message << " ---" << endl;
+  std::cout << "--- Testing " << message << " ---" << endl;
 }
 
 void InheritanceTest::print_test( bool result ) {

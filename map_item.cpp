@@ -7,10 +7,12 @@
 
 #include "map_item.h"
 
-MapItem::MapItem() {
-    type = 'E';
-}
+MapItem::MapItem() {}
 
+MapItem::~MapItem() {}
+
+
+/*
 MapItem::MapItem(char initializer) {
     type = initializer;
 }
@@ -44,3 +46,4 @@ std::ostream& operator<<(std::ostream& ostrizr, MapItem& mapitem){
     ostrizr << mapitem.type;
     return ostrizr;
 }
+*/
