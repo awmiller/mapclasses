@@ -12,17 +12,14 @@ CFLAGS=-c -g -Wall
 
 all: driver
 
-driver: main.o op_overloading_test.o map.o map_item.o factory.o inheritance_test.o node.o no_op_item.o queue.o residential.o
-	$(CC) main.o op_overloading_test.o map.o map_item.o factory.o inheritance_test.o node.o no_op_item.o queue.o residential.o -g -o driver
+driver: main.o map_item.o factory.o inheritance_test.o node.o no_op_item.o queue.o residential.o
+	$(CC) main.o map_item.o factory.o inheritance_test.o node.o no_op_item.o queue.o residential.o -g -o driver
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp
 
-op_overloading_test.o: op_overloading_test.cpp op_overloading_test.h
-	$(CC) $(CFLAGS) op_overloading_test.cpp
-
-map.o: map.cpp map.h
-	$(CC) $(CFLAGS) map.cpp
+#map.o: map.cpp map.h
+#	$(CC) $(CFLAGS) map.cpp
 
 map_item.o: map_item.cpp map_item.h
 	$(CC) $(CFLAGS) map_item.cpp
